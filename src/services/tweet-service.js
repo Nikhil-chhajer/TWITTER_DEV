@@ -12,12 +12,14 @@ async create(data){
     let titleOfPresentTags=alreadyPresentTags.map(tags=>tags.title);
     let newTags=tags.filter(tag =>!titleOfPresentTags.includes(tag));
     newTags=newTags.map(tag =>{
-        return {title:tag,tweet:[tweet.id]}
-    });
-    await this.hashtagRepository.bulkCreate(newTags);
-    alreadyPresentTags.forEach( (tag)=>{
+        return {title:tag,tweets:[tweet.id]}
+    }); 
+
+   await this.hashtagRepository.bulkCreate(newTags);
+
+    alreadyPresentTags.forEach( async(tag)=>{
         tag.tweets.push(tweet.id);
-        tag.save();
+        await tag.save();
     })
     return tweet;
 }

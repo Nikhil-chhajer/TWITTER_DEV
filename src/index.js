@@ -5,13 +5,16 @@ const app=express();
 const TweetService=require('./services/tweet-service')
 //const Comment =require('./models/commnet');
 // const TweetRepository=require('./repository/tweet-repository');
+const HashtagRepository=require('./repository/hashtag-repository');
 app.listen(3000,async()=>{
     console.log(`server started`);
     await connect();
     console.log("MongoDB connected");
-    let service=new TweetService();
-    const tweet=await service.create({
-        content:'my #working #twitter'
-    });
-    console.log(tweet);
+//    let repo=new HashtagRepository();
+let service=new TweetService();
+let tweet=await service.create({
+    content:'this is #life #cyclic'
+})
+
+ console.log(tweet);
 }) 
