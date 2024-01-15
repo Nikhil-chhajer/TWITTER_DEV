@@ -1,11 +1,11 @@
-const express=require('express');
-const connect=require('./config/database');
+import express from 'express';
+import {connect} from './config/database.js'
 // const Tweet=require('./models/tweet');
 const app=express();
-const TweetService=require('./services/tweet-service')
+import TweetService from './services/tweet-service.js';
 //const Comment =require('./models/commnet');
 // const TweetRepository=require('./repository/tweet-repository');
-const HashtagRepository=require('./repository/hashtag-repository');
+
 app.listen(3000,async()=>{
     console.log(`server started`);
     await connect();

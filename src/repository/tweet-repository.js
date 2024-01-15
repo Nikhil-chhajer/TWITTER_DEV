@@ -1,5 +1,5 @@
 
-const Tweet=require('../models/tweet');
+import Tweet from'../models/tweet.js';
 class TweetRepository{
     async create(data){
         try {
@@ -58,4 +58,4 @@ class TweetRepository{
     //offset and limit used for pagination 
     //if we set offset=2, and limit =4 then we will get DB entry starting from 2 and total no of entries shown will be 4
 }
-module.exports=TweetRepository;
+export default TweetRepository;
