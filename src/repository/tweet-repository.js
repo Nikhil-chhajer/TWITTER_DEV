@@ -45,5 +45,19 @@ class TweetRepository extends CrudRepository{
     }
     //offset and limit used for pagination 
     //if we set offset=2, and limit =4 then we will get DB entry starting from 2 and total no of entries shown will be 4
+    async find(id){
+        try {
+            const tweet =await Tweet.findById(id).populate({path:'likes'});
+            return tweet;
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
 }
+
+
 export default TweetRepository;
